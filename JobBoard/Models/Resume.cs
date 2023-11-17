@@ -2,7 +2,7 @@
 {
     public class Resume
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
 
         public int UserId { get; set; }
         public User User { get; set; }

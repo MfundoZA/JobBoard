@@ -8,21 +8,21 @@
         public User User { get; set; }
 
         // Paragraph explaining an applicant's goal.
-        public string Objective { get; set; }
+        public string? Objective { get; set; }
 
         // Represent the various education and work experience an applicant has.
-        public IList<Milestone> Milestones { get; set; }
+        public IList<Milestone>? Milestones { get; set; }
 
         // Represents projects an applicant has done outside of formal (salaried) work or education
-        public IList<Project> Projects { get; set; }
+        public IList<Project>? Projects { get; set; }
 
-        public IList<Skill> Skills { get; set; }
+        public IList<Skill>? Skills { get; set; }
 
         // Represents individuals or companies that can speak on the applicant's character
-        public IList<Reference> References { get; set; }
+        public IList<Reference>? References { get; set; }
 
-        public Resume(int id, int userId, User user, string objective, IList<Milestone> milestones,
-            IList<Project> projects, IList<Skill> skills, IList<Reference> references)
+        public Resume(int id, int userId, User user, string? objective, IList<Milestone>? milestones,
+            IList<Project>? projects, IList<Skill>? skills, IList<Reference>? references)
         {
             Id = id;
             UserId = userId;

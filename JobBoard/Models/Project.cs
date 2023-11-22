@@ -9,7 +9,7 @@
         public DateTime? EndDate { get; set; }
         public List<String> ProjectBulletPoints { get; set; }
 
-        public Project(int id, string ProjectName, string? ProjectDescription, DateTime? startDate, DateTime? EndDate, List<string>? projectBulletPoints)
+        public Project(int id, string projectName, string? projectDescription, DateTime? startDate, DateTime? endDate, List<string>? projectBulletPoints)
         {
             Id = id;
             ProjectName = projectName;

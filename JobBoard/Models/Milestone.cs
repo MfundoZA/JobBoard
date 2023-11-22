@@ -20,7 +20,11 @@
 
         public List<string>? MilestoneBulletPoints { get; set; }
 
-        public Milestone(int id, string milestoneType, string? companyName, string title, DateTime? startDate, DateTime? endDate, List<string>? milestoneBulletPoints)
+        // Each Milestone can be assosiated with 1 or more resumes
+        public List<Resume> Resumes { get; set; }
+
+        public Milestone(int id, string milestoneType, string? companyName, string title,
+            DateTime? startDate, DateTime? endDate, List<string>? milestoneBulletPoints, List<Resume> resumes)
         {
             Id = id;
             MilestoneType = milestoneType;
@@ -29,6 +33,7 @@
             StartDate = startDate;
             EndDate = endDate;
             MilestoneBulletPoints = milestoneBulletPoints;
+            Resumes = resumes;
         }
     }
 }

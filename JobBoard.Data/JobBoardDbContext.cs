@@ -1,5 +1,6 @@
 ﻿using JobBoard.API.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace JobBoard.Data
     {
         DbSet<User> Users { get; set; } = null!;
         DbSet<Profile> Resumes { get; set; } = null!;
+
+        public JobBoardDbContext(DbContextOptions options) : base(options) { }
     }
 }

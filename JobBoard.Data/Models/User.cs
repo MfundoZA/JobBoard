@@ -8,12 +8,11 @@
         public string Email { get; set; }
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
-        public IList<Profile>? Resumes { get; set; }
+        public Profile Profile { get; set; }
         public string CityBased { get; set; }
-        public IList<string>? ProfileLinks { get; set; }
-
+        
         public User(int id, string firstName, string lastName, string email, string password,
-            string phoneNumber, IList<Profile>? resumes, string cityBased, IList<string>? profileLinks)
+            string phoneNumber, Profile profile, string cityBased)
         {
             Id = id;
             FirstName = firstName;
@@ -21,9 +20,8 @@
             Email = email;
             Password = password;
             PhoneNumber = phoneNumber;
-            Resumes = resumes;
+            Profile = profile;
             CityBased = cityBased;
-            ProfileLinks = profileLinks;
         }
     }
 }

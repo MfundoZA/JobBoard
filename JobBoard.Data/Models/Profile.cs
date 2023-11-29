@@ -18,9 +18,12 @@
 
         public IList<Skill>? Skills { get; set; }
 
+        public IList<string>? ProfileLinks { get; set; }
+
+
 
         public Profile(int id, int userId, User user, string? description, IList<Milestone>? education,
-            IList<Milestone>? workExperience, IList<Project>? projects, IList<Skill>? skills)
+            IList<Milestone>? workExperience, IList<Project>? projects, IList<Skill>? skills, Profile profile)
         {
             Id = id;
             UserId = userId;

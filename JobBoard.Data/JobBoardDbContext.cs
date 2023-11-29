@@ -11,6 +11,6 @@ namespace JobBoard.Data
     public class JobBoardDbContext : DbContext
     {
         DbSet<User> Users { get; set; } = null!;
-        DbSet<Resume> Resumes { get; set; } = null!;
+        DbSet<Profile> Resumes { get; set; } = null!;
     }
 }

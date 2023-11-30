@@ -1,7 +1,6 @@
 ﻿using JobBoard.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using JobBoard.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.

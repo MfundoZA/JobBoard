@@ -6,6 +6,11 @@
         public string SkillName { get; set; }
         public string SkillCatergory { get; set; }
 
+        public Skill()
+        {
+                    
+        }
+
         public Skill(int id, string skillName, string skillCatergory)
         {
             Id = id;

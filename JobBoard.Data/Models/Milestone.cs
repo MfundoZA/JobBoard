@@ -14,23 +14,28 @@
         // Refers to the title of the position related to the milestone i.e Software Engineer.
         public string Title { get; set; }
 
+        public string Description { get; set; }
+
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
 
-        public List<string>? MilestoneBulletPoints { get; set; }
 
+        public Milestone()
+        {
+
+        }
 
         public Milestone(int id, string milestoneType, string? companyName, string title,
-            DateTime? startDate, DateTime? endDate, List<string>? milestoneBulletPoints)
+            string description, DateTime? startDate, DateTime? endDate)
         {
             Id = id;
             MilestoneType = milestoneType;
             CompanyName = companyName;
             Title = title;
+            Description = description;
             StartDate = startDate;
             EndDate = endDate;
-            MilestoneBulletPoints = milestoneBulletPoints;
         }
     }
 }

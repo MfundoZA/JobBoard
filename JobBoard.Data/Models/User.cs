@@ -10,7 +10,12 @@
         public string PhoneNumber { get; set; }
         public Profile Profile { get; set; }
         public string CityBased { get; set; }
-        
+
+        public User()
+        {
+                
+        }
+
         public User(int id, string firstName, string lastName, string email, string password,
             string phoneNumber, Profile profile, string cityBased)
         {

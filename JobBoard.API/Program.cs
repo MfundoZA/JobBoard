@@ -1,8 +1,9 @@
-using JobBoard.Data;
+﻿using JobBoard.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using JobBoard.API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -11,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<JobBoardDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+options.UseSqlServer("Data Source=JORDAN;Initial Catalog=JobBoardDb;Integrated Security=True"));
 
 var app = builder.Build();
 

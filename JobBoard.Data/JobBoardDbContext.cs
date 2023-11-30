@@ -11,8 +11,8 @@ namespace JobBoard.Data
 {
     public class JobBoardDbContext : DbContext
     {
-        DbSet<User> Users { get; set; } = null!;
-        DbSet<Profile> Resumes { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Profile> Profiles { get; set; } = null!;
 
         public JobBoardDbContext(DbContextOptions options) : base(options) { }
     }

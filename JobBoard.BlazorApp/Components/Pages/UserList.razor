@@ -1,0 +1,32 @@
+﻿@page "/users"
+
+
+@using System.Net.Http
+@inject HttpClient Http
+
+@using System.Net.Http.Json
+@using JobBoard.API.Models
+
+<h3>Users</h3>
+
+@if (users is null)
+{
+    <p>Unable to get users from API. Please try again later.</p>
+}
+else
+{
+    <ul>
+        @foreach (var user in users)
+        {
+            <li>@user.FirstName @user.LastName</li>
+        }
+    </ul>
+}
+
+
+@code {
+    private User[]? users;
+
+    protected override async Task OnInitializedAsync() =>
+        users = await Http.GetFromJsonAsync<User[]>("https://localhost:7111/api/Users");
+}

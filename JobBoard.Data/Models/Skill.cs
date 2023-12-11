@@ -3,18 +3,19 @@
     public class Skill
     {
         public int Id { get; private set; }
-        public string SkillName { get; set; }
-        public string SkillCatergory { get; set; }
+        public string SkillTitle { get; set; } = null!;
+        public string SkillCatergory { get; set; } = null!;
+        public List<Profile>? Profiles { get; set; } 
 
         public Skill()
         {
                     
         }
 
-        public Skill(int id, string skillName, string skillCatergory)
+        public Skill(int id, string skillTitle, string skillCatergory)
         {
             Id = id;
-            SkillName = skillName;
+            SkillTitle = skillTitle;
             SkillCatergory = skillCatergory;
         }
     }

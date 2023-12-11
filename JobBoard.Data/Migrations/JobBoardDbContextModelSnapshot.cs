@@ -22,6 +22,21 @@ namespace JobBoard.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("CertificationProfile", b =>
+                {
+                    b.Property<int>("CertificationsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfilesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CertificationsId", "ProfilesId");
+
+                    b.HasIndex("ProfilesId");
+
+                    b.ToTable("CertificationProfiles");
+                });
+
             modelBuilder.Entity("JobBoard.API.Models.Milestone", b =>
                 {
                     b.Property<int>("Id")
@@ -47,9 +62,6 @@ namespace JobBoard.Data.Migrations
                     b.Property<int?>("ProfileId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProfileId1")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -61,9 +73,7 @@ namespace JobBoard.Data.Migrations
 
                     b.HasIndex("ProfileId");
 
-                    b.HasIndex("ProfileId1");
-
-                    b.ToTable("Milestone");
+                    b.ToTable("Milestones");
                 });
 
             modelBuilder.Entity("JobBoard.API.Models.Profile", b =>
@@ -116,7 +126,7 @@ namespace JobBoard.Data.Migrations
 
                     b.HasIndex("ProfileId");
 
-                    b.ToTable("Project");
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("JobBoard.API.Models.Skill", b =>
@@ -127,22 +137,17 @@ namespace JobBoard.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("ProfileId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SkillCatergory")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SkillName")
+                    b.Property<string>("SkillTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProfileId");
-
-                    b.ToTable("Skill");
+                    b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("JobBoard.API.Models.User", b =>
@@ -182,15 +187,68 @@ namespace JobBoard.Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("JobBoard.Data.Models.Certification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime?>("DateExpires")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateIssued")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Issuer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Certifications");
+                });
+
+            modelBuilder.Entity("ProfileSkill", b =>
+                {
+                    b.Property<int>("ProfilesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkillsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProfilesId", "SkillsId");
+
+                    b.HasIndex("SkillsId");
+
+                    b.ToTable("ProfileSkills");
+                });
+
+            modelBuilder.Entity("CertificationProfile", b =>
+                {
+                    b.HasOne("JobBoard.Data.Models.Certification", null)
+                        .WithMany()
+                        .HasForeignKey("CertificationsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JobBoard.API.Models.Profile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfilesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("JobBoard.API.Models.Milestone", b =>
                 {
                     b.HasOne("JobBoard.API.Models.Profile", null)
-                        .WithMany("Education")
+                        .WithMany("Milestones")
                         .HasForeignKey("ProfileId");
-
-                    b.HasOne("JobBoard.API.Models.Profile", null)
-                        .WithMany("WorkExperience")
-                        .HasForeignKey("ProfileId1");
                 });
 
             modelBuilder.Entity("JobBoard.API.Models.Profile", b =>
@@ -211,22 +269,26 @@ namespace JobBoard.Data.Migrations
                         .HasForeignKey("ProfileId");
                 });
 
-            modelBuilder.Entity("JobBoard.API.Models.Skill", b =>
+            modelBuilder.Entity("ProfileSkill", b =>
                 {
                     b.HasOne("JobBoard.API.Models.Profile", null)
-                        .WithMany("Skills")
-                        .HasForeignKey("ProfileId");
+                        .WithMany()
+                        .HasForeignKey("ProfilesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JobBoard.API.Models.Skill", null)
+                        .WithMany()
+                        .HasForeignKey("SkillsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("JobBoard.API.Models.Profile", b =>
                 {
-                    b.Navigation("Education");
+                    b.Navigation("Milestones");
 
                     b.Navigation("Projects");
-
-                    b.Navigation("Skills");
-
-                    b.Navigation("WorkExperience");
                 });
 
             modelBuilder.Entity("JobBoard.API.Models.User", b =>

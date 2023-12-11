@@ -1,4 +1,4 @@
-﻿using JobBoard.API.Models;
+﻿using JobBoard.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;

@@ -1,4 +1,4 @@
-﻿namespace JobBoard.API.Models
+﻿namespace JobBoard.Data.Models
 {
     public class Skill
     {

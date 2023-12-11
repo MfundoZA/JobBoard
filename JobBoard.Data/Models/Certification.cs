@@ -1,4 +1,4 @@
-﻿using JobBoard.API.Models;
+﻿using JobBoard.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

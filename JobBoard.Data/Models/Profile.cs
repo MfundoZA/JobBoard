@@ -1,6 +1,6 @@
 ﻿using JobBoard.Data.Models;
 
-namespace JobBoard.API.Models
+namespace JobBoard.Data.Models
 {
     public class Profile
     {

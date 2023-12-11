@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace JobBoard.Data.Controllers
+namespace JobBoard.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -82,7 +82,7 @@ namespace JobBoard.Data.Controllers
         // POST: api/Products
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostProduct(User user)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
             if (_context.Users == null)
             {
@@ -96,7 +96,7 @@ namespace JobBoard.Data.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteUser(int id)
         {
             if (_context.Users == null)
             {

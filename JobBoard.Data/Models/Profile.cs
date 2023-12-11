@@ -1,4 +1,6 @@
-﻿namespace JobBoard.API.Models
+﻿using JobBoard.Data.Models;
+
+namespace JobBoard.API.Models
 {
     public class Profile
     {
@@ -9,29 +11,27 @@
 
         public string? Description { get; set; }
 
-        public IList<Milestone>? Education { get; set; }
+        public IList<Milestone>? Milestones { get; set; }
 
-        public IList<Milestone>? WorkExperience { get; set; }
-
-        // Represents projects an applicant has done outside of formal (salaried) work or education
         public IList<Project>? Projects { get; set; }
 
         public IList<Skill>? Skills { get; set; }
+
+        public IList<Certification>? Certifications { get; set; }
 
         public Profile()
         {
 
         }
 
-        public Profile(int id, int userId, User user, string? description, IList<Milestone>? education,
-            IList<Milestone>? workExperience, IList<Project>? projects, IList<Skill>? skills)
+        public Profile(int id, int userId, User user, string? description, IList<Milestone>? milestones,
+            IList<Project>? projects, IList<Skill>? skills)
         {
             Id = id;
             UserId = userId;
             User = user;
             Description = description;
-            Education = education;
-            WorkExperience = WorkExperience;
+            Milestones = milestones;
             Projects = projects;
             Skills = skills;
         }

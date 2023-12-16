@@ -1,4 +1,4 @@
-﻿using JobBoard.Data.Models;
+﻿using JobBoard.API.Models;
 using JobBoard.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -79,7 +79,7 @@ namespace JobBoard.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Products
+        // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)

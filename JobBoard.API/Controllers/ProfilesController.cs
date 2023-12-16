@@ -9,11 +9,11 @@ namespace JobBoard.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProfilesController : ControllerBase
+    public class ProjectsController : ControllerBase
     {
         private readonly JobBoardDbContext _context;
 
-        public ProfilesController(JobBoardDbContext context)
+        public ProjectsController(JobBoardDbContext context)
         {
                 _context = context;
         }
@@ -79,7 +79,7 @@ namespace JobBoard.API.Controllers
             return NoContent();
         }
 
-        // POST: api/Products
+        // POST: api/Profiles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Profile>> PostProfile(Profile profile)

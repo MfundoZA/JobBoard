@@ -7,7 +7,7 @@ namespace JobBoard.Data.Models
         public int Id { get; private set; }
 
         public int UserId { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = null!;
 
         public string? Description { get; set; }
 

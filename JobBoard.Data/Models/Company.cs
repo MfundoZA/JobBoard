@@ -6,7 +6,7 @@
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         public string CityBased {  get; set; } = null!;
-        public CompanySize CompanySize { get; private set; }
+        public CompanySize CompanySize { get; set; }
 
         public Company()
         {

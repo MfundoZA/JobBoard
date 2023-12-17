@@ -18,7 +18,7 @@ namespace JobBoard.Data.Models
         public string? Responsibilities { get; set; }
         public string? Requirements { get; set; }
         public string? DesiredExperience { get; set; }
-        public List<Profile> Applicants { get; set; }
+        public List<Profile>? Applicants { get; set; }
 
         public Opening()
         {
@@ -27,7 +27,7 @@ namespace JobBoard.Data.Models
 
         public Opening(int id, string title, Company company, DateTime datePosted,
             DateTime closingDate, JobType jobType, string description, string? responsibilities,
-            string? requirements, string? desiredExperience, List<Profile> applicants)
+            string? requirements, string? desiredExperience, List<Profile>? applicants)
         {
             Id = id;
             Title = title;

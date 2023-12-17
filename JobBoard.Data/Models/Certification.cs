@@ -15,5 +15,21 @@ namespace JobBoard.Data.Models
         public DateTime DateIssued { get; set; }
         public DateTime? DateExpires { get; set; }
         public List<Profile>? Profiles { get; set; }
+
+        public Certification()
+        {
+            
+        }
+
+        public Certification(int id, string title, string issuer, DateTime dateIssued, DateTime? dateExpires,
+            List<Profile>? profiles)
+        {
+            Id = id;
+            Title = title;
+            Issuer = issuer;
+            DateIssued = dateIssued;
+            DateExpires = dateExpires;
+            Profiles = profiles;
+        }
     }
 }

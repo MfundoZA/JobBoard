@@ -9,11 +9,11 @@ namespace JobBoard.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProjectsController : ControllerBase
+    public class ProfilesController : ControllerBase
     {
         private readonly JobBoardDbContext _context;
 
-        public ProjectsController(JobBoardDbContext context)
+        public ProfilesController(JobBoardDbContext context)
         {
                 _context = context;
         }

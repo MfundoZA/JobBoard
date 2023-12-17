@@ -116,7 +116,7 @@ namespace JobBoard.API.Controllers
 
         private bool ProjectExists(int id)
         {
-            return (_context.Project?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Projects?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

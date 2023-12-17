@@ -1,4 +1,4 @@
-﻿using JobBoard.API.Models;
+﻿using JobBoard.Data.Models;
 using JobBoard.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

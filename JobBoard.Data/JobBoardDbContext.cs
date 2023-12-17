@@ -11,8 +11,15 @@ namespace JobBoard.Data
 {
     public class JobBoardDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; } = null!;
-        public DbSet<Profile> Profiles { get; set; } = null!;
+        public DbSet<User>? Users { get; set; }
+        public DbSet<Profile>? Profiles { get; set; }
+        public DbSet<Milestone>? Milestones { get; set; }
+        public DbSet<Project>? Projects { get; set; }
+        public DbSet<Skill>? Skills { get; set; }
+        public DbSet<Certification>? Certifications { get; set; }
+
+        public DbSet<Company>? Companies { get; set; }
+        public DbSet<Opening>? Openings { get; set; }
 
         public JobBoardDbContext()
         {

@@ -4,6 +4,7 @@ using JobBoard.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Data.Migrations
 {
     [DbContext(typeof(JobBoardDbContext))]
-    partial class JobBoardDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231219073000_NullabilityAndProfileOpenings")]
+    partial class NullabilityAndProfileOpenings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,75 +198,6 @@ namespace JobBoard.Data.Migrations
                     b.ToTable("Profiles");
                 });
 
-            modelBuilder.Entity("JobBoard.Data.Models.ProfileCertification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CertificationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CertificationId");
-
-                    b.HasIndex("ProfileId");
-
-                    b.ToTable("ProfileCertifications");
-                });
-
-            modelBuilder.Entity("JobBoard.Data.Models.ProfileOpening", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("OpeningId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OpeningId");
-
-                    b.HasIndex("ProfileId");
-
-                    b.ToTable("ProfileOpenings");
-                });
-
-            modelBuilder.Entity("JobBoard.Data.Models.ProfileSkill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SkillId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProfileId");
-
-                    b.HasIndex("SkillId");
-
-                    b.ToTable("ProfileSkills");
-                });
-
             modelBuilder.Entity("JobBoard.Data.Models.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -424,63 +357,6 @@ namespace JobBoard.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("JobBoard.Data.Models.ProfileCertification", b =>
-                {
-                    b.HasOne("JobBoard.Data.Models.Certification", "Certification")
-                        .WithMany()
-                        .HasForeignKey("CertificationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JobBoard.Data.Models.Profile", "Profile")
-                        .WithMany()
-                        .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Certification");
-
-                    b.Navigation("Profile");
-                });
-
-            modelBuilder.Entity("JobBoard.Data.Models.ProfileOpening", b =>
-                {
-                    b.HasOne("JobBoard.Data.Models.Opening", "Opening")
-                        .WithMany()
-                        .HasForeignKey("OpeningId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JobBoard.Data.Models.Profile", "Profile")
-                        .WithMany()
-                        .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Opening");
-
-                    b.Navigation("Profile");
-                });
-
-            modelBuilder.Entity("JobBoard.Data.Models.ProfileSkill", b =>
-                {
-                    b.HasOne("JobBoard.Data.Models.Profile", "Profile")
-                        .WithMany()
-                        .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JobBoard.Data.Models.Skill", "Skill")
-                        .WithMany()
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Profile");
-
-                    b.Navigation("Skill");
                 });
 
             modelBuilder.Entity("JobBoard.Data.Models.Project", b =>

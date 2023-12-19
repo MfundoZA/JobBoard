@@ -118,10 +118,5 @@ namespace JobBoard.API.Controllers
         {
             return (_context.Openings?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-
-        private bool ApplicantExists(int openingId, int applicantId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

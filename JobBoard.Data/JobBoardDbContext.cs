@@ -34,7 +34,7 @@ namespace JobBoard.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=JORDAN;Initial Catalog=JobBoardDb;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=JobBoardDb;Integrated Security=True");
         }
     }
 }

@@ -19,13 +19,15 @@ namespace JobBoard.Data.Models
 
         public IList<Certification>? Certifications { get; set; }
 
+        public IList<Opening>? Openings { get; set; }
+
         public Profile()
         {
 
         }
 
         public Profile(int id, int userId, User user, string? description, IList<Milestone>? milestones,
-            IList<Project>? projects, IList<Skill>? skills)
+            IList<Project>? projects, IList<Skill>? skills, IList<Certification>? certifications, IList<Opening>? openings)
         {
             Id = id;
             UserId = userId;
@@ -34,6 +36,8 @@ namespace JobBoard.Data.Models
             Milestones = milestones;
             Projects = projects;
             Skills = skills;
+            Certifications = certifications;
+            Openings = openings;
         }
     }
 }

@@ -35,5 +35,35 @@ namespace JobBoard.API.Controllers
 
             return await companyApplicants.ToListAsync();
         }
+
+        // GET: api/Openings/5/Applicants/5
+        [HttpGet("{openingId}/Applicants/{applicantId}")]
+        public async Task<ActionResult<Profile>> GetApplicant(int openingId, int applicantId)
+        {
+            if (_context.ProfileOpenings == null)
+            {
+                return NotFound();
+            }
+
+            var opening = await _context.ProfileOpenings.Where(e => e.OpeningId == openingId).FirstOrDefaultAsync();
+
+            if (opening != null)
+            {
+                var applicant = opening.Opening?.Applicants?.Find(e => e.Id == applicantId);
+
+                if (applicant == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return applicant;
+                }
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

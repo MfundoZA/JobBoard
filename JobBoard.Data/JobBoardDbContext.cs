@@ -25,6 +25,8 @@ namespace JobBoard.Data
         public DbSet<ProfileCertification>? ProfileCertifications { get; set; }
         public DbSet<ProfileOpening>? ProfileOpenings { get; set; }
 
+        public DbSet<Recruiter>? Recruiters { get; set; } 
+
         public JobBoardDbContext()
         {
 

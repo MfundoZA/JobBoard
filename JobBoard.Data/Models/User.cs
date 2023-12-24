@@ -11,10 +11,7 @@
         public Profile Profile { get; set; } = null!;
         public string? CityBased { get; set; }
 
-        public User()
-        {
-                
-        }
+        public User() { }
 
         public User(int id, string firstName, string? lastName, string email, string password,
             string phoneNumber, Profile profile, string? cityBased)

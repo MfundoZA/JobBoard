@@ -11,6 +11,7 @@ namespace JobBoard.Data
 {
     public class JobBoardDbContext : DbContext
     {
+        // Entry tables
         public DbSet<User>? Users { get; set; }
         public DbSet<Profile>? Profiles { get; set; }
         public DbSet<Milestone>? Milestones { get; set; }
@@ -21,16 +22,14 @@ namespace JobBoard.Data
         public DbSet<Company>? Companies { get; set; }
         public DbSet<Opening>? Openings { get; set; }
 
+        // Lookup tables
         public DbSet<ProfileSkill>? ProfileSkills { get; set; }
         public DbSet<ProfileCertification>? ProfileCertifications { get; set; }
         public DbSet<ProfileOpening>? ProfileOpenings { get; set; }
 
         public DbSet<Recruiter>? Recruiters { get; set; } 
 
-        public JobBoardDbContext()
-        {
-
-        }
+        public JobBoardDbContext() { }
 
         public JobBoardDbContext(DbContextOptions options) : base(options) { }
 

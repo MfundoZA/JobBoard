@@ -6,6 +6,7 @@
 
         // Refers to the type of milestone i.e Education, Work Experience or Achievement
         public MilestoneType MilestoneType { get; set; }
+
         // Refers to the name of the organization the user was in when the milestone was achieved.
         // It can be null if the achievement was is not associated with any organization.
         public string? CompanyName { get; set; }
@@ -14,16 +15,11 @@
         public string Title { get; set; } = null!;
 
         public string Description { get; set; } = null!;
-
         public DateTime? StartDate { get; set; }
-
         public DateTime? EndDate { get; set; }
 
 
-        public Milestone()
-        {
-
-        }
+        public Milestone() { }
 
         public Milestone(int id, MilestoneType milestoneType, string? companyName, string title,
             string description, DateTime? startDate, DateTime? endDate)

@@ -19,5 +19,12 @@ namespace JobBoard.API.Controllers
             _context = context;
             HttpContextAccessor = httpContextAccessor;
         }
+
+        //// Post: AuthController/Register
+        //[HttpPost]
+        //public ActionResult Register()
+        //{
+            
+        //}
     }
 }

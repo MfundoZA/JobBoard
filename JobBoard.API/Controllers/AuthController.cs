@@ -20,6 +20,20 @@ namespace JobBoard.API.Controllers
             HttpContextAccessor = httpContextAccessor;
         }
 
+        // If the string cannot be converted to a MailAddress object, then the email is not valid
+        public bool IsValidEmail(string submittedEmail)
+        {
+            try
+            {
+                var email = new MailAddress(submittedEmail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         //// Post: AuthController/Register
         //[HttpPost]
         //public ActionResult Register()

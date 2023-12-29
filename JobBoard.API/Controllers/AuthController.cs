@@ -33,12 +33,15 @@ namespace JobBoard.API.Controllers
                 return false;
             }
         }
+        public bool IsValidPassword(string submittedPassword)
+        {
+            var hasNumber = new Regex(@"[0-9]+");
+            var hasUpperChar = new Regex(@"[A-Z]+");
+            var hasMinimum8Chars = new Regex(@".{8,}");
 
-        //// Post: AuthController/Register
-        //[HttpPost]
-        //public ActionResult Register()
-        //{
+            var isValid = hasNumber.IsMatch(submittedPassword) && hasUpperChar.IsMatch(submittedPassword) && hasMinimum8Chars.IsMatch(submittedPassword);
             
-        //}
+            return isValid;
+        }
     }
 }

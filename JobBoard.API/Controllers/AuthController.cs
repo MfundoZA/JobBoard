@@ -74,7 +74,7 @@ namespace JobBoard.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(IformCollection collection)
+        public ActionResult Login(IFormCollection collection)
         {
             var email = collection["email"];
             var password = collection["password"];
@@ -83,11 +83,11 @@ namespace JobBoard.API.Controllers
             {
                 return BadRequest("Email is not valid");
             }
-            else if (_context.User.Any(u => u.Email == email && U.Password == password))
+            else if (_context.Users.Any(u => u.Email == email && U.Password == password))
             {
-                var currentUser = _context.User.First(u => u.Email == email);
+                var currentUser = _context.Users.First(u => u.Email == email);
                 
-                return currentUser;
+                return Ok(currentUser);
             }
             else
             {

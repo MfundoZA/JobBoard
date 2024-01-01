@@ -47,7 +47,7 @@ namespace JobBoard.API.Controllers
             }
             else if (_context.Users.Any(u => u.Email == submittedEmail))
             {
-                return BadRequest("Email already exists");
+                return BadRequest("Email already exists. Please try logging in.");
             }
             else
             {
@@ -70,6 +70,28 @@ namespace JobBoard.API.Controllers
 
                 // return new user
                 return Ok(newUser);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Login(IformCollection collection)
+        {
+            var email = collection["email"];
+            var password = collection["password"];
+
+            if (IsValidEmail(email) == false)
+            {
+                return BadRequest("Email is not valid");
+            }
+            else if (_context.User.Any(u => u.Email == email && U.Password == password))
+            {
+                var currentUser = _context.User.First(u => u.Email == email);
+                
+                return currentUser;
+            }
+            else
+            {
+                return BadRequest("Incorrect email address or password. Please try again.");
             }
         }
 
@@ -96,5 +118,7 @@ namespace JobBoard.API.Controllers
 
             return isValid;
         }
+
+        // Todo: Implement hashing algorithm
     }
 }

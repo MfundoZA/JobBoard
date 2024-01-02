@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobBoard.Data", "JobBoard.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobBoard.API", "JobBoard.API\JobBoard.API.csproj", "{6A9E4025-B5CF-4C7E-820D-1E1B249A019E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobBoard.BlazorApp", "JobBoard.BlazorApp\JobBoard.BlazorApp.csproj", "{40AF5510-4092-4D4F-B48F-C0C7E469AC4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobBoard.BlazorApp", "JobBoard.BlazorApp\JobBoard.BlazorApp.csproj", "{40AF5510-4092-4D4F-B48F-C0C7E469AC4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

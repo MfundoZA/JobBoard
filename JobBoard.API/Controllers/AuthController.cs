@@ -73,7 +73,7 @@ namespace JobBoard.API.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Login(IFormCollection collection)
         {
             var email = collection["email"];
@@ -96,6 +96,7 @@ namespace JobBoard.API.Controllers
         }
 
         // If the string cannot be converted to a MailAddress object, then the email is not valid
+        [NonAction]
         public bool IsValidEmail(string submittedEmail)
         {
             try
@@ -108,6 +109,8 @@ namespace JobBoard.API.Controllers
                 return false;
             }
         }
+
+        [NonAction]
         public bool IsValidPassword(string submittedPassword)
         {
             var hasNumber = new Regex(@"[0-9]+");

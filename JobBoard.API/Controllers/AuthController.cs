@@ -83,7 +83,7 @@ namespace JobBoard.API.Controllers
             {
                 return BadRequest("Email is not valid");
             }
-            else if (_context.Users.Any(u => u.Email == email && U.Password == password))
+            else if (_context.Users.Any(u => u.Email == email && u.Password == password))
             {
                 var currentUser = _context.Users.First(u => u.Email == email);
                 

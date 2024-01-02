@@ -1,0 +1,42 @@
+﻿@page "/register"
+@using JobBoard.Data.Models
+
+<PageTitle>Register</PageTitle>
+
+<h1>Register</h1>
+
+<EditForm Model="@User" OnSubmit="@Submit" FormName="RegisterForm">
+    <div style="margin:2em;display:flex;flex-direction:column;">
+        <label>First Name</label>
+        <InputText @bind-Value="@User.FirstName" />
+    </div>
+
+    <div style="margin:2em;display:flex;flex-direction:column;">
+        <label>Last Name</label>
+        <InputText @bind-Value="@User.LastName" />
+    </div>
+
+    <div style="margin:2em;display:flex;flex-direction:column;">
+        <label>Email</label>
+        <InputText @bind-Value="@User.Email" />
+    </div>
+
+    <div style="margin:2em;display:flex;flex-direction:column;">
+        <label>Password</label>
+        <InputText @bind-Value="@User.Password" />
+    </div>
+
+    <button type="submit" style="margin:2em;">Submit</button>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    public User User { get; set; } = null!;
+
+    protected override void OnInitialized() => User ??= new();
+
+    private void Submit()
+    {
+        throw new NotImplementedException();
+    }
+}

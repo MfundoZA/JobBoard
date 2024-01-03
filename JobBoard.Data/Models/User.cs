@@ -13,6 +13,18 @@
 
         public User() { }
 
+        public User(string firstName, string? lastName, string email, string password,
+            string phoneNumber, Profile profile, string? cityBased)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            PhoneNumber = phoneNumber;
+            Profile = profile;
+            CityBased = cityBased;
+        }
+
         public User(int id, string firstName, string? lastName, string email, string password,
             string phoneNumber, Profile profile, string? cityBased)
         {

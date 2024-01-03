@@ -1,29 +1,30 @@
 ﻿@page "/register"
+@using JobBoard.Data
 @using JobBoard.Data.Models
 
 <PageTitle>Register</PageTitle>
 
 <h1>Register</h1>
 
-<EditForm Model="@User" OnSubmit="@Submit" FormName="RegisterForm">
+<EditForm Model="@Model" OnSubmit="@Submit" FormName="RegisterForm">
     <div style="margin:2em;display:flex;flex-direction:column;">
         <label>First Name</label>
-        <InputText @bind-Value="@User.FirstName" />
+        <InputText @bind-Value="@Model.FirstName" />
     </div>
 
     <div style="margin:2em;display:flex;flex-direction:column;">
         <label>Last Name</label>
-        <InputText @bind-Value="@User.LastName" />
+        <InputText @bind-Value="@Model.LastName" />
     </div>
 
     <div style="margin:2em;display:flex;flex-direction:column;">
         <label>Email</label>
-        <InputText @bind-Value="@User.Email" />
+        <InputText @bind-Value="@Model.Email" />
     </div>
 
     <div style="margin:2em;display:flex;flex-direction:column;">
         <label>Password</label>
-        <InputText @bind-Value="@User.Password" />
+        <InputText @bind-Value="@Model.Password" />
     </div>
 
     <button type="submit" style="margin:2em;">Submit</button>
@@ -31,12 +32,32 @@
 
 @code {
     [SupplyParameterFromForm]
-    public User User { get; set; } = null!;
+    public RegisterViewModel Model { get; set; } = new();
 
-    protected override void OnInitialized() => User ??= new();
+    public class RegisterViewModel
+    {
+        public JobBoardDbContext Context { get; set; } = new JobBoardDbContext();
+
+        public string FirstName { get; set; } = "";
+        public string LastName { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string Password { get; set; } = "";
+        public string PhoneNumber { get; set; } = "";
+        public string CityBased { get; set; } = " ";
+
+        public RegisterViewModel() { }
+
+
+        public void RegisterUser()
+        {
+            var newUser = new User(FirstName, LastName, Email, Password, PhoneNumber, new Profile(), CityBased);
+            Context.Users.Add(newUser);
+            Context.SaveChanges();
+        }
+    }
 
     private void Submit()
     {
-        throw new NotImplementedException();
+        Model.RegisterUser();
     }
 }

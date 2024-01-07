@@ -36,8 +36,6 @@
 
     public class RegisterViewModel
     {
-        public JobBoardDbContext Context { get; set; } = new JobBoardDbContext();
-
         public string FirstName { get; set; } = "";
         public string LastName { get; set; } = "";
         public string Email { get; set; } = "";
@@ -50,9 +48,10 @@
 
         public void RegisterUser()
         {
-            var newUser = new User(FirstName, LastName, Email, Password, PhoneNumber, new Profile(), CityBased);
-            Context.Users.Add(newUser);
-            Context.SaveChanges();
+            var context = new JobBoardDbContext();
+            var newUser = new User(FirstName, LastName, Email, Password, "111111111", new Profile(), CityBased);
+            context.Users.Add(newUser);
+            context.SaveChanges();
         }
     }
 
